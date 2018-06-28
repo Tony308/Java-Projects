@@ -6,14 +6,13 @@ public class Paint {
     private int litres;
     private String name;
 
-    public ArrayList<Paint> paints;
+    public ArrayList<Paint> paints = new ArrayList<>();
 
     Paint(int coverage, double price, int litres, String name) {
         this.setCoverage(coverage);
         this.setPrice(price);
         this.setPrice(price);
         this.setName(name);
-        paints = new ArrayList<>();
     }
 
     public void waste(int room) {
