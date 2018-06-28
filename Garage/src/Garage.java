@@ -1,4 +1,3 @@
-import java.lang.invoke.SwitchPoint;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class Garage {
     }
 
     public void searchVehicle(String id, String type) {
-        int counter = 0;
+
         for (Vehicle item: storage) {
             if (item.getID().equals(id) && item.getType().equals(type)){
                 item.getAll();
