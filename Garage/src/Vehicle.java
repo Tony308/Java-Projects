@@ -1,6 +1,6 @@
-public class Vehicle {
+abstract public class Vehicle {
 
-    private String ID, vehicleType, make, model;
+    protected String ID, vehicleType, make, model;
 
      Vehicle (String id, String type, String make, String model) {
         this.ID = id;
@@ -9,22 +9,20 @@ public class Vehicle {
         this.model = model;
     }
 
-    public void getAll() {
-        System.out.println(this.getID() + this.getType() + this.getMake() + this.getModel());
-    }
+    abstract public void getAll();
 
     public String getID() {
-         return this.ID;
+        return this.ID;
     }
 
     public void setID(String id) {this.ID = id;}
 
     public String getType() {
-         return this.vehicleType;
+        return this.vehicleType;
     }
 
     public void setType(String type){
-         this.vehicleType = type;
+        this.vehicleType = type;
     }
 
     public String getMake() { return this.make;}

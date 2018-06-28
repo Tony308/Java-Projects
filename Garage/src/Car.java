@@ -6,7 +6,7 @@ public class Car extends Vehicle {
 
     Car (String id, String type, String make, String model, double engineSize,
          String engine, int passengers) {
-        super(id, type, make, model);
+        super(id,type,make,model);
         this.engineSize = engineSize;
         this.engine = engine;
         this.passengers = passengers;
@@ -22,6 +22,15 @@ public class Car extends Vehicle {
 
     public double getEngineSize() { return this.engineSize;}
 
-    public void setEngineSize(double engineSize) {this.engineSize = engineSize;}
+    public void setEngineSize(double size){
+        this.engineSize = size;
+    }
+
+    @Override
+    public void getAll() {
+        System.out.println("ID : " + this.getID() + "Type :" + this.getType() + "Make: " +
+                this.getMake() + "Model: " + this.getModel() + "Engine: " + this.getEngine() + this.getEngineSize() +
+                this.getPassengers());
+    }
 
 }
