@@ -11,29 +11,23 @@ public class Paint {
     Paint(int coverage, double price, int litres, String name) {
         this.setCoverage(coverage);
         this.setPrice(price);
-        this.setPrice(price);
+        this.setLitres(litres);
         this.setName(name);
     }
 
-    public void waste(int room) {
+    public double waste(int room) {
         double noTins = 0;
 
         noTins = room /(double)this.getCoverage();
-        //Rounds up
-        //System.out.println((int)Math.ceil(noTins));
 
-        if ((int)Math.ceil(noTins) - noTins > 0) {
-            System.out.println((int)Math.ceil(noTins) - noTins);
-        }
+        return (Math.ceil(noTins) - noTins) * 100;
     }
 
-    public void cheapestPaint(int room) {
+    public double cheapestPaint(int room) {
         double cost = 0;
-        for (Paint item:paints) {
-            cost = (room/(double)this.getCoverage())* this.getPrice();
-        }
-        System.out.println(cost);
 
+        cost = (room/(double)this.getCoverage())* this.getPrice();
+        return cost;
     }
 
     public void addToList(Paint item) {

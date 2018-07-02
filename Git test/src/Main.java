@@ -26,8 +26,5 @@ public class Main {
                 ((Rectangle) item).getPerimeter();
             }
         }
-
-
-
     }
 }

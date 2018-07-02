@@ -1,3 +1,5 @@
+package HelloWorld.src;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -5,26 +7,27 @@ public class Main {
 
         Main form = new Main();
 
-     /*   System.out.println(form.blackJack(21, 19));
+        /*System.out.println(form.blackJack(21, 19));
         form.uniqueSum(2,1,1);
-        form.tooHot(60, true);*/
+        form.tooHot(60, true);
         form.peopleLoop();
-        //form.searchName("Tony");
+        form.searchName("Tony");
+        */
 
 
     }
 
     public int blackJack(int num1, int num2) {
-
+        int result = 0;
         if ( (21 - num1) < 0 || (21 - num2) < 0){
-            return 0;
+            result = 0;
         } else if ( (21 - num1 ) < (21 - num2) ){
-            return num1;
+            result = num1;
         } else if ((21 - num1) > ( 21 - num2) ){
-            return num2;
+            result = num2;
         }
-        //Error if returned
-        return 100;
+
+        return result;
     }
 
     public void uniqueSum(int num1, int num2, int num3) {
@@ -59,9 +62,8 @@ public class Main {
 
         People tony = new People("Tony", 21, "IT Consultant");
         People james = new People("James", 21, "Nurse");
-        tony.getAll();
 
-        ArrayList<People> multi = new ArrayList<>();
+        ArrayList<People> multi = new ArrayList();
 
         multi.add(tony);
         multi.add(james);
@@ -76,7 +78,7 @@ public class Main {
         People james = new People("James", 21, "Nurse");
         //tony.getAll();
 
-        ArrayList<People> multi = new ArrayList<>();
+        ArrayList<People> multi = new ArrayList();
 
         multi.add(tony);
         multi.add(james);

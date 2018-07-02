@@ -1,5 +1,6 @@
-public class People {
+package HelloWorld.src;
 
+public class People {
 
     private String name;
     private int age;
