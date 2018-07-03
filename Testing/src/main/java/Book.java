@@ -1,25 +1,24 @@
-public class Book extends Item{
-    private String title;
-    private String author;
+public class Book extends Item {
 
-    Book (String title, String author) {
-        this.title = title;
-        this.author = author;
+    private String ISBN;
+
+    Book (String title, String author, String publisher, String ISBN) {
+        super(title, author, publisher);
+        this.setISBN(getISBN());
     }
 
-    public String getTitle() {
-        return title;
+    public void update(String title, String author, String publisher,String ISBN) {
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setPublisher(publisher);
+        this.setISBN(ISBN);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 }

@@ -1,5 +1,3 @@
-package HelloWorld.src;
-
 public class People {
 
     private String name;
