@@ -69,7 +69,7 @@ public class Game {
     }
 
     public Direction getDirection() {
-        String input = "UP";
+        String input = "DoWn";
 
         Direction result = null;
         String temp = input.toLowerCase();

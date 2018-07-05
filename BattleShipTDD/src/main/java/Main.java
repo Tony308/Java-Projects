@@ -5,8 +5,8 @@ public class Main {
         Game game = new Game();
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
-
         game.start(player1, player2);
+
 
     }
 }

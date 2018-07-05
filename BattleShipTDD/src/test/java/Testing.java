@@ -9,16 +9,19 @@ public class Testing {
 
     @Test
     public void placeShipTest() {
+        Game game = new Game();
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
-        Game game = new Game();
         game.start(player1, player2);
 
+        Scanner sc = new Scanner(System.in);
 
+        do {
+            String input = sc.next();
+            player1.placeShip(player1.getName().toLowerCase() + input, 1 ,1, game.getDirection());
+            player2.placeShip(player2.getName().toLowerCase() + input, 2 ,2, game.getDirection());
+        } while (false);
 
-
-        player1.placeShip(player1.getName().toLowerCase() + "pb1", 1 ,1, game.getDirection());
-        player2.placeShip(player2.getName().toLowerCase() + "pb2", 2 ,2, game.getDirection());
 
         String[][] stuff = new String[3][3];
 
@@ -41,6 +44,7 @@ public class Testing {
             }
             System.out.println();
         }
+
         assertNotEquals(stuff, player1.board);
         assertNotEquals(stuff, player2.board);
 

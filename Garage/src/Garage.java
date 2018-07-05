@@ -2,13 +2,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Garage {
+public class Garage implements clonable{
 
     ArrayList<Vehicle> storage;
+    private ArrayList<Vehicle> empList;
 
     Garage() {
         storage = new ArrayList<>();
     }
+
+    Garage(ArrayList<Vehicle> list) {
+        empList = new ArrayList<>();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        ArrayList<Vehicle> temp = new ArrayList<>();
+
+        for (Vehicle item:storage) {
+            temp.add(item);
+        }
+
+        return new Garage(temp);
+    }
+
     Main main = new Main();
 
     public void addVehicle(Vehicle addition) {
@@ -23,6 +40,9 @@ public class Garage {
             }
         }
     }
+
+
+
 
     public void removeVehicle(String id, String type) {
 
