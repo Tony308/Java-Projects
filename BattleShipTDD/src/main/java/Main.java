@@ -8,6 +8,5 @@ public class Main {
 
         game.start(player1, player2);
 
-
     }
 }

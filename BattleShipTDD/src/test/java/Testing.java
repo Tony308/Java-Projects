@@ -2,18 +2,25 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Testing {
 
     @Test
-
     public void placeShipTest() {
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
         Game game = new Game();
         game.start(player1, player2);
-        player1.placeShip(player1.getName().toLowerCase() + "pb1", 1 ,1);
-        player2.placeShip(player1.getName().toLowerCase() + "pb2", 2 ,2);
-        String[][] stuff = new String[4][4];
+
+
+
+
+        player1.placeShip(player1.getName().toLowerCase() + "pb1", 1 ,1, game.getDirection());
+        player2.placeShip(player2.getName().toLowerCase() + "pb2", 2 ,2, game.getDirection());
+
+        String[][] stuff = new String[3][3];
 
         for (int x = 0; x < 3;x++) {
             for (int z = 0; z < 3;z++){
@@ -27,7 +34,15 @@ public class Testing {
             }
             System.out.println();
         }
+
+        for (int x = 0; x < 3;x++) {
+            for (int y = 0; y < 3; y++) {
+                System.out.print(player2.board[x][y]);
+            }
+            System.out.println();
+        }
         assertNotEquals(stuff, player1.board);
+        assertNotEquals(stuff, player2.board);
 
     }
 

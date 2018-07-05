@@ -1,7 +1,10 @@
+import net.bytebuddy.dynamic.loading.ClassInjector;
+
+import java.util.Scanner;
+
 public class Game {
 
     public void start(Player player1, Player player2) {
-
 
         PatrolBoat pb1 = new PatrolBoat(player1.getName().toLowerCase() + "pb1");
         PatrolBoat pb2 = new PatrolBoat(player1.getName().toLowerCase() + "pb2");
@@ -63,6 +66,28 @@ public class Game {
         System.out.println("The dashes represent empty space. " +
                 "You have to populate the board with your ships.");
 
+    }
+
+    public Direction getDirection() {
+        String input = "UP";
+
+        Direction result = null;
+        String temp = input.toLowerCase();
+
+        if (temp.equals("up")) {
+            result = Direction.UP;
+        } else if (temp.equals("right")) {
+            result =  Direction.RIGHT;
+        } else if (temp.equals("down")) {
+            result =  Direction.DOWN;
+        } else if (temp.equals("left")) {
+            result =   Direction.LEFT;
+        } else {
+            System.out.println("You haven't entered a direction correctly.");
+            System.out.println("Try again.");
+//            getDirection();
+        }
+        return result;
 
     }
 }

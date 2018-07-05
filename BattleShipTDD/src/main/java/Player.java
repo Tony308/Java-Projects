@@ -1,3 +1,6 @@
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import sun.security.x509.CertAttrSet;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,13 +14,31 @@ public class Player extends Board {
 
     }
 
-    public void placeShip(String type, int x, int y) {
-
+    public void placeShip(String type, int x, int y, Direction input) {
 
         if (board[x][y].equals(" - ")){
-            this.board[x][y] = type.substring(type.length()-3,type.length());
+            this.board[x][y] = type.substring(type.length()-3);
         } else if (!board[x][y].equals(" - ")) {
             System.out.println("This space is occupied.");
+            return;
+        }
+
+        switch (input){
+            case UP:
+                this.board[x-1][y] = type.substring(type.length()-3);
+                break;
+            case RIGHT:
+
+                break;
+            case DOWN:
+
+                break;
+            case LEFT:
+
+                break;
+            default:
+                System.out.println("You haven't entered a direction for your ship to face.");
+                return;
         }
 
     }

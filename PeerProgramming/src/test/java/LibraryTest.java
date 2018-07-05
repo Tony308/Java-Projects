@@ -3,8 +3,6 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
 
-
-
     @Test
     public void testStringCheck() {
 
