@@ -1,4 +1,16 @@
+import javax.print.DocFlavor;
+
 public abstract class Ships{
-    private String[][] board = new String[3][3];
+
+    private int x,y;
+    protected String shipIdentifier;
+
+    protected void setType(String identifier) {
+        this.shipIdentifier = identifier;
+    }
+
+    public String getType() {
+        return this.shipIdentifier;
+    }
 
 }

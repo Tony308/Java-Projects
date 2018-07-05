@@ -12,6 +12,7 @@ public class Journal extends Item {
         this.setAuthor(author);
         this.setPublisher(publisher);
         this.setVolume(volume);
+
     }
 
     public int getVolume() {

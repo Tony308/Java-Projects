@@ -1,9 +1,11 @@
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+public class LibraryTest {
 
-public class Test {
 
-    @org.junit.Test
+
+    @Test
     public void testStringCheck() {
 
         StringManipulation check = new StringManipulation();
@@ -11,4 +13,7 @@ public class Test {
         assertEquals("Deepisodes of Deep Space Nine came on the televisionly after the news." , check.checkString());
 
     }
+
+
+
 }

@@ -9,6 +9,7 @@ public abstract class Item {
         this.setPublisher(publisher);
     }
 
+
     public String getTitle() {
         return title;
     }
