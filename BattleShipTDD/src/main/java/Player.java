@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Player extends Board {
 
-    HashMap<String, Ships> ships = new HashMap<String, Ships>();
+    public HashMap<String, Ships> ships = new HashMap<String, Ships>();
     private String name;
 
     Player(String name) {
