@@ -1,12 +1,10 @@
 import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 
 public class ShoppingSiteTest {
 
@@ -21,7 +19,7 @@ public class ShoppingSiteTest {
 
     @After
     public void teardown() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         driver.quit();
     }
 
@@ -31,6 +29,6 @@ public class ShoppingSiteTest {
         driver.get(url);
         driver.findElement(By.name("search_query")).sendKeys("Dress");
         driver.findElement(By.name("submit_search")).submit();
-        assertEquals("DRESS", driver.findElement(By.xpath("//*[@id=\"center_column\"]/h1/span[1]")).getText());
+        assertEquals("Printed Summer Dress", driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[2]/h5/a")).getText());
     }
 }
