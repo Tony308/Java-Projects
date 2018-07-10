@@ -1,12 +1,24 @@
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFShape;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -14,11 +26,18 @@ public class DemoQa {
 
     WebDriver driver;
     String url = "http://demoqa.com/";
+    ExtentReports report;
+    ExtentTest test;
 
     @Before
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Development\\web_driver\\chromedriver.exe");
         driver = new ChromeDriver();
+
+        report = new ExtentReports("C:\\Development\\web_driver\\Registration Report.html", true);
+        test = report.startTest("Testing");
+
+
     }
 
     @After
@@ -28,23 +47,33 @@ public class DemoQa {
     }
 
     @Test
+    @Ignore
     public void droppable() {
         driver.manage().window().maximize();
         driver.get(url);
         driver.findElement(By.xpath("//*[@id=\"menu-item-141\"]/a")).click();
-        driver.findElement(By.xpath("//*[@id=\"draggableview\"]"));
         driver.findElement(By.xpath("//*[@id=\"droppableview\"]")).click();
         WebElement source = driver.findElement(By.xpath("//*[@id=\"draggableview\"]"));
         WebElement target = driver.findElement(By.xpath("//*[@id=\"droppableview\"]"));
-
         (new Actions(driver)).dragAndDrop(source, target).perform();
-
         assertEquals( "Dropped!", driver.findElement(By.xpath("//*[@id=\"droppableview\"]/p")).getText());
-
 
     }
 
     @Test
+    public void pomDroppable() {
+        Homepage home = PageFactory.initElements(driver,Homepage.class);
+        Droppable main = PageFactory.initElements(driver, Droppable.class);
+        driver.manage().window().maximize();
+        driver.get(url);
+        home.navDrop();
+        main.dragAndDrop(driver, main.getSource(), main.getTarget());
+        assertEquals("Dropped!", main.getText().getText() );
+
+    }
+
+    @Test
+    @Ignore
     public void selectable() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(url);
@@ -64,8 +93,28 @@ public class DemoQa {
         (new Actions(driver)).moveToElement(last).perform();
 
     }
+    @Test
+    public void pomSelectable() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.get(url);
+
+        Homepage home = PageFactory.initElements(driver, Homepage.class);
+        Selectable select = PageFactory.initElements(driver, Selectable.class);
+        home.navSelect();
+        select.selectItem1(driver);
+        select.selectItem2(driver);
+        select.selectItem3(driver);
+        select.selectItem4(driver);
+        Thread.sleep(2000);
+        select.selectMulti(driver, select.getItem1(), select.getItem4() );
+
+//        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.id();")));
+
+    }
 
     @Test
+    @Ignore
     public void registration() {
         driver.manage().window().maximize();
         driver.get(url);
@@ -78,5 +127,36 @@ public class DemoQa {
         driver.findElement(By.id("dd_date_8")).sendKeys("4");
         driver.findElement(By.id("yy_date_8")).sendKeys("1996");
 //        new Actions(driver).click(driver.findElement(By.id("dropdown_7"))).perform();
+    }
+
+    @Test
+    public void pomRegistration() {
+        Homepage home = PageFactory.initElements(driver, Homepage.class);
+        Registration reg = PageFactory.initElements(driver, Registration.class);
+
+        driver.manage().window().maximize();
+        driver.get(url);
+        home.navReg();
+
+        FileInputStream file = null;
+
+        try {
+            file = new FileInputStream(Constant.filepath + Constant.file);
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
+        XSSFWorkbook workbook = null;
+        try {
+            workbook = new XSSFWorkbook(file);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        XSSFSheet sheet = workbook.getSheetAt(0);
+        XSSFCell cell = sheet.getRow(1).getCell(0);
+
+//        driver.findElement(By.id("name_3_firstname")).click();
+//        driver.findElement(By.id("name_3_firstname")).sendKeys(cell.getStringCellValue());
+        reg.inputFirstname(cell.getStringCellValue());
     }
 }

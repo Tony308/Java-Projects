@@ -9,5 +9,8 @@
         <module name="DemoQA" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DemoQA" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
