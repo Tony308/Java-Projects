@@ -145,9 +145,7 @@ public class DemoQa {
         driver.get(url);
         home.navReg();
 
-       reg.registerSomeone(driver);
-
-
+        reg.registerSomeone(driver);
 
     }
 }

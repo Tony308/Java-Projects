@@ -33,7 +33,7 @@ public class Registration {
 
 
 
-    Actions action;
+    private Actions action;
 
     public void registerSomeone(WebDriver driver) {
         action = new Actions(driver);
@@ -60,43 +60,41 @@ public class Registration {
         cell = sheet.getRow(1).getCell(1);
         action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
 
-//        maritalStatus.click();
-//        hobby.click();
+        maritalStatus.click();
+        hobby.click();
 
-        //selects country
+//        selects country
         cell = sheet.getRow(1).getCell(2);
         inputCountry(cell.getStringCellValue());
-        action.sendKeys(Keys.RETURN);
 
+        //Enter DoB
         cell = sheet.getRow(1).getCell(3);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-        action.sendKeys(Keys.RETURN);
+        action.sendKeys(cell.getStringCellValue()).perform();
 
-        cell = sheet.getRow(1).getCell(4);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-        action.sendKeys(Keys.RETURN);
+//        cell = sheet.getRow(1).getCell(4);
+//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+//        action.sendKeys(Keys.RETURN);
+//
+//        cell = sheet.getRow(1).getCell(5);
+//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+//        action.sendKeys(Keys.RETURN);
+//
+//        cell = sheet.getRow(1).getCell(6);
+//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+//
+//        cell = sheet.getRow(1).getCell(7);
+//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+//
+//        cell = sheet.getRow(1).getCell(8);
+//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
 
-        cell = sheet.getRow(1).getCell(5);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-        action.sendKeys(Keys.RETURN);
 
-        cell = sheet.getRow(1).getCell(6);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-
-        cell = sheet.getRow(1).getCell(7);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-
-        cell = sheet.getRow(1).getCell(8);
-        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-
-//        action.sendKeys(Keys.TAB).perform();
 
     }
 
     public void inputFirstname(String firstname) {
         this.firstname.click();
         this.firstname.sendKeys(firstname);
-        this.firstname.sendKeys(Keys.TAB);
 
     }
 
@@ -104,11 +102,38 @@ public class Registration {
         this.lastname.click();
         this.lastname.sendKeys(surname);
     }
+
     public void inputCountry(String country){
         this.country.click();
         this.country.sendKeys(country);
-        this.country.sendKeys(Keys.RETURN);
     }
 
 
+    public WebElement getFirstname() {
+        return firstname;
+    }
+
+    public WebElement getLastname() {
+        return lastname;
+    }
+
+    public WebElement getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public WebElement getHobby() {
+        return hobby;
+    }
+
+    public WebElement getCountry() {
+        return country;
+    }
+
+    public WebElement getPasswordStrength() {
+        return passwordStrength;
+    }
+
+    public Actions getAction() {
+        return action;
+    }
 }
