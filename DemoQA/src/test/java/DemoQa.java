@@ -1,6 +1,8 @@
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import javafx.scene.control.Tab;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFShape;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -10,11 +12,13 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,16 +29,18 @@ import static org.junit.Assert.*;
 public class DemoQa {
 
     WebDriver driver;
-    String url = "http://demoqa.com/";
+    String url = Constant.url;
     ExtentReports report;
     ExtentTest test;
+    Actions action;
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Development\\web_driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", Constant.filepath + Constant.chromeDriver);
         driver = new ChromeDriver();
 
-        report = new ExtentReports("C:\\Development\\web_driver\\Registration Report.html", true);
+        action = new Actions(driver);
+        report = new ExtentReports(Constant.filepath+Constant.reportFile, true);
         test = report.startTest("Testing");
 
 
@@ -44,6 +50,8 @@ public class DemoQa {
     public void tearDown() throws InterruptedException {
         Thread.sleep(2500);
         driver.quit();
+        report.endTest(test);
+        report.flush();
     }
 
     @Test
@@ -105,12 +113,11 @@ public class DemoQa {
         select.selectItem2(driver);
         select.selectItem3(driver);
         select.selectItem4(driver);
-        Thread.sleep(2000);
         select.selectMulti(driver, select.getItem1(), select.getItem4() );
 
 //        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
 //                .until(ExpectedConditions.presenceOfElementLocated(By.id();")));
-
+//        assertEquals();
     }
 
     @Test
@@ -138,25 +145,9 @@ public class DemoQa {
         driver.get(url);
         home.navReg();
 
-        FileInputStream file = null;
+       reg.registerSomeone(driver);
 
-        try {
-            file = new FileInputStream(Constant.filepath + Constant.file);
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
-        XSSFWorkbook workbook = null;
-        try {
-            workbook = new XSSFWorkbook(file);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
 
-        XSSFSheet sheet = workbook.getSheetAt(0);
-        XSSFCell cell = sheet.getRow(1).getCell(0);
 
-//        driver.findElement(By.id("name_3_firstname")).click();
-//        driver.findElement(By.id("name_3_firstname")).sendKeys(cell.getStringCellValue());
-        reg.inputFirstname(cell.getStringCellValue());
     }
 }

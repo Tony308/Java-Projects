@@ -4,6 +4,9 @@ public class Constant {
     public static final String file = "input.xlsx";
     public static final String reportFile = "Report.html";
 
-    public static final String homepage = "http://www.demoqa.com";
+    public static final String chromeDriver = "chromedriver.exe";
+
+    public static final String url = "http://www.demoqa.com";
+
 
 }
