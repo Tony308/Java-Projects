@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.Key;
 
 public class Registration {
 
@@ -55,7 +56,7 @@ public class Registration {
         XSSFCell cell = sheet.getRow(1).getCell(0);
 
         inputFirstname(cell.getStringCellValue());
-
+//
         //enter lastname
         cell = sheet.getRow(1).getCell(1);
         action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
@@ -67,24 +68,29 @@ public class Registration {
         cell = sheet.getRow(1).getCell(2);
         inputCountry(cell.getStringCellValue());
 
-        //Enter DoB
+        //Enter month
         cell = sheet.getRow(1).getCell(3);
-        action.sendKeys(cell.getStringCellValue()).perform();
+        action.sendKeys(cell.getRawValue()).perform();
 
-//        cell = sheet.getRow(1).getCell(4);
-//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-//        action.sendKeys(Keys.RETURN);
+        //enter day
+        cell = sheet.getRow(1).getCell(4);
+        action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
+
+//        enter year
+        cell = sheet.getRow(1).getCell(5);
+        action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
+        action.sendKeys(Keys.RETURN).perform();
+
+
+        //mobile
+        cell = sheet.getRow(1).getCell(6);
+        action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
 //
-//        cell = sheet.getRow(1).getCell(5);
-//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-//        action.sendKeys(Keys.RETURN);
-//
-//        cell = sheet.getRow(1).getCell(6);
-//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-//
+////        username
 //        cell = sheet.getRow(1).getCell(7);
 //        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
 //
+////        email
 //        cell = sheet.getRow(1).getCell(8);
 //        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
 
@@ -106,6 +112,7 @@ public class Registration {
     public void inputCountry(String country){
         this.country.click();
         this.country.sendKeys(country);
+        this.country.sendKeys(Keys.TAB,Keys.TAB);
     }
 
 

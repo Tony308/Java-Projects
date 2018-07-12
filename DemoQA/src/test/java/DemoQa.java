@@ -43,7 +43,6 @@ public class DemoQa {
         report = new ExtentReports(Constant.filepath+Constant.reportFile, true);
         test = report.startTest("Testing");
 
-
     }
 
     @After
