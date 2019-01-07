@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Testing {
 
     @Test
-
+    @Ignore
     public void placeShipTest() {
         Game game = new Game();
 
@@ -37,10 +37,10 @@ public class Testing {
 
         game.start(player1, player2);
 
-
         Scanner sc = new Scanner(System.in);
 
-//            String input = sc.nextLine();
+//        String input = sc.nextLine();
+
         do {
             System.out.println("Pick which boat you'd like to play.");
 
@@ -53,10 +53,11 @@ public class Testing {
                 it.remove(); // avoids a ConcurrentModificationException
             }
 
+            String direction = sc.next();
             String input = "pb";
-
-            player1.placeShip(player1.getName().toLowerCase() + input, 1 ,1, game.getDirection());
-            player2.placeShip(player2.getName().toLowerCase() + input, 2 ,2, game.getDirection());
+            player1.placeShip( input, 1 ,1, game.getDirection(direction));
+            direction = sc.next();
+            player2.placeShip( input, 2 ,2, game.getDirection(direction));
         } while (false);
 
 
@@ -75,7 +76,7 @@ public class Testing {
             }
             System.out.println();
         }
-        System.out.println("Player 2 baord: ");
+        System.out.println("Player 2 board: ");
         for (int x = 0; x < 3;x++) {
             for (int y = 0; y < 3; y++) {
                 System.out.print(player2.board[x][y]);
@@ -157,9 +158,9 @@ public class Testing {
     @Test
     public void getDirectionDownTest() {
         Direction result = null;
-        String input = "DoWn";
+        String input = "DoWn".toLowerCase();
 
-        String temp = input.toLowerCase();
+        String temp = input;
 
         if (temp.equals("up")) {
             result = Direction.UP;
@@ -172,7 +173,6 @@ public class Testing {
         } else {
             System.out.println("You haven't entered a direction correctly.");
             System.out.println("Try again.");
-//            getDirectionDownTest();
         }
         assertEquals(Direction.DOWN, result);
 

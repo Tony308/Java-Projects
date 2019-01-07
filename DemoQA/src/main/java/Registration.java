@@ -64,35 +64,42 @@ public class Registration {
         maritalStatus.click();
         hobby.click();
 
-//        selects country
+//      selects country
         cell = sheet.getRow(1).getCell(2);
         inputCountry(cell.getStringCellValue());
+        action.sendKeys(Keys.RETURN).perform();
+
 
         //Enter month
         cell = sheet.getRow(1).getCell(3);
-        action.sendKeys(cell.getRawValue()).perform();
+        action.sendKeys(cell.getRawValue().toString(), Keys.TAB).perform();
+
 
         //enter day
         cell = sheet.getRow(1).getCell(4);
-        action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
+        action.sendKeys(Keys.TAB, cell.getRawValue().toString()).perform();
 
 //        enter year
         cell = sheet.getRow(1).getCell(5);
         action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
-        action.sendKeys(Keys.RETURN).perform();
-
 
         //mobile
         cell = sheet.getRow(1).getCell(6);
-        action.sendKeys(Keys.TAB, cell.getRawValue()).perform();
-//
-////        username
-//        cell = sheet.getRow(1).getCell(7);
-//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
-//
-////        email
-//        cell = sheet.getRow(1).getCell(8);
-//        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+        action.sendKeys(Keys.TAB, cell.getRawValue().toString()).perform();
+
+        //username
+        cell = sheet.getRow(1).getCell(7);
+        action.sendKeys(Keys.TAB, cell.getStringCellValue()).perform();
+
+        //email
+        cell = sheet.getRow(1).getCell(8);
+        action.sendKeys(Keys.TAB, cell.getStringCellValue(), Keys.TAB, Keys.TAB).perform();
+
+        cell = sheet.getRow(1).getCell(9);
+        action.sendKeys(cell.getStringCellValue().toString(), Keys.TAB).perform();
+
+        cell = sheet.getRow(1).getCell(10);
+        action.sendKeys(cell.getStringCellValue().toString(), Keys.TAB).perform();
 
 
 

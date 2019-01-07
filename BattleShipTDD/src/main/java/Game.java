@@ -68,10 +68,9 @@ public class Game {
 
     }
 
-    public Direction getDirection() {
-        String input = "right";
-
+    public Direction getDirection(String input) {
         Direction result = null;
+
         String temp = input.toLowerCase();
 
         if (temp.equals("up")) {
@@ -85,7 +84,6 @@ public class Game {
         } else {
             System.out.println("You haven't entered a direction correctly.");
             System.out.println("Try again.");
-//            getDirection();
         }
         return result;
 

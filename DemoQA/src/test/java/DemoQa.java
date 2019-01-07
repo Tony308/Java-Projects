@@ -1,5 +1,6 @@
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+
 import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import javafx.scene.control.Tab;
@@ -18,7 +19,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
