@@ -9,7 +9,7 @@ public class Board {
     public void populateDefaultBoard() {
         for (int x = 0; x < 3;x++) {
             for (int z = 0; z < 3;z++){
-                board[x][z] = " - ";
+                board[x][z] = " ~ ";
             }
         }
     }

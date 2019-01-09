@@ -6,16 +6,23 @@ public class Player extends Board {
     public HashMap<String, Ships> ships = new HashMap<String, Ships>();
     private String name;
 
-    Player(String name) {
-        this.name = name;
-
+    public HashMap<String, Ships> getShips() {
+        return ships;
     }
 
-    public void placeShip(String type, int x, int y, Direction input)  {
+    public void setShips(HashMap<String, Ships> ships) {
+        this.ships = ships;
+    }
 
-        if (board[x][y].equals(" - ")) {
+    Player(String name) {
+        this.name = name;
+    }
+
+    void placeShip(String type, int x, int y, Direction input)  {
+
+        if (board[x][y].equals(" ~ ")) {
             this.board[x][y] = " " + type;
-        } else if (!board[x][y].equals(" - ")) {
+        } else if (!board[x][y].equals(" ~ ")) {
             System.out.println("This space is occupied.");
         }
 
