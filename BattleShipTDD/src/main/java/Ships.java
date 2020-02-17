@@ -14,5 +14,4 @@ public abstract class Ships{
     public String getType() {
         return this.shipIdentifier;
     }
-
 }

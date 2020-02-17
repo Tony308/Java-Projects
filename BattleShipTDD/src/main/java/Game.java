@@ -1,5 +1,7 @@
 import net.bytebuddy.dynamic.loading.ClassInjector;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
@@ -68,10 +70,9 @@ public class Game {
 
     }
 
-    public Direction getDirection() {
-        String input = "right";
-
+    public Direction getDirection(String input) {
         Direction result = null;
+
         String temp = input.toLowerCase();
 
         if (temp.equals("up")) {
@@ -85,9 +86,59 @@ public class Game {
         } else {
             System.out.println("You haven't entered a direction correctly.");
             System.out.println("Try again.");
-//            getDirection();
         }
         return result;
 
+    }
+
+    public void printPlayerBoard(Player player) {
+        System.out.println(player.getName() + " board: ");
+        for (int x = 0; x < 3;x++) {
+            for (int y = 0; y < 3; y++) {
+                System.out.print(player.board[x][y]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void placeShipsPhase(Player player1, Player player2, Scanner sc, Game game) {
+        do {
+            int shipsLeft = player1.ships.size();
+
+            // Iterates through the data dictionary
+            Iterator it = player1.ships.entrySet().iterator();
+
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry)it.next();
+                System.out.println(pair.getValue());
+
+                it.remove(); // avoids a ConcurrentModificationException
+            }
+            System.out.println("Player 1. Pick which boat you'd like to play.");
+            String ship = sc.next();
+
+            System.out.println("Row: ?");
+            int row = sc.nextInt();
+            System.out.println("Column: ?");
+            int col = sc.nextInt();
+
+            System.out.println("Enter direction you want");
+            String direction = sc.next();
+
+            player1.placeShip( ship, row ,col, game.getDirection(direction));
+
+            System.out.println("Player 2");
+            System.out.println("Enter the ship you want.");
+            ship = sc.next();
+            System.out.println("Row: ?");
+            row = sc.nextInt();
+            System.out.println("Column: ?");
+            col = sc.nextInt();
+
+            System.out.println("Enter direction you want");
+            direction = sc.next();
+            player2.placeShip( ship, row ,col, game.getDirection(direction));
+            shipsLeft--;
+        } while (false );
     }
 }

@@ -1,7 +1,4 @@
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import sun.security.x509.CertAttrSet;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player extends Board {
@@ -9,39 +6,46 @@ public class Player extends Board {
     public HashMap<String, Ships> ships = new HashMap<String, Ships>();
     private String name;
 
-    Player(String name) {
-        this.name = name;
-
+    public HashMap<String, Ships> getShips() {
+        return ships;
     }
 
-    public void placeShip(String type, int x, int y, Direction input)  {
+    public void setShips(HashMap<String, Ships> ships) {
+        this.ships = ships;
+    }
 
-        if (board[x][y].equals(" - ")) {
-            this.board[x][y] = type.substring(type.length() - 3);
-        } else if (!board[x][y].equals(" - ")) {
+    Player(String name) {
+        this.name = name;
+    }
+
+    void placeShip(String type, int x, int y, Direction input)  {
+
+        if (board[x][y].equals(" ~ ")) {
+            this.board[x][y] = " " + type;
+        } else if (!board[x][y].equals(" ~ ")) {
             System.out.println("This space is occupied.");
         }
 
         try {
             switch (input) {
                 case UP:
-                    this.board[x - 1][y] = type.substring(type.length() - 3);
+                    this.board[x - 1][y] = " " + type;
                     break;
                 case RIGHT:
-                    this.board[x][y + 1] = type.substring(type.length() - 3);
+                    this.board[x][y + 1] = " " + type;
                     break;
                 case DOWN:
-                    this.board[x + 1][y] = type.substring(type.length() - 3);
+                    this.board[x + 1][y] = " " + type;
                     break;
                 case LEFT:
-                    this.board[x][y--] = type.substring(type.length() - 3);
+                    this.board[x][y--] = " " + type;
                     break;
                 default:
                     System.out.println("You haven't entered a direction for your ship to face.");
                     break;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("You choose that direction.");
+            System.out.println("You can't choose that direction.");
         }
 
     }
