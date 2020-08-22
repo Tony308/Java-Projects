@@ -1,4 +1,4 @@
-package stubs;
+package com.huang.stubs;
 
 public class SelectShipStub implements SelectShip {
     public ShipType selectShip() {

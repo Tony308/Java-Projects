@@ -1,5 +1,7 @@
+package com.huang.domain;
+
 public class Destroyer extends Ships {
-    Destroyer(String type) {
+    public Destroyer(String type) {
         this.setType(type);
     }
     public String getType() {

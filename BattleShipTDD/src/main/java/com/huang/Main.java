@@ -1,10 +1,9 @@
-import org.openqa.selenium.interactions.SourceType;
+package com.huang;
 
-import java.util.Iterator;
-import java.util.Map;
+import com.huang.domain.Player;
+
 import java.util.Scanner;
 
-import static org.junit.Assert.assertNotEquals;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +25,7 @@ public class Main {
                 stuff[x][z] = " ~ ";
             }
         }
-
+        
         game.printPlayerBoard(player1);
         game.printPlayerBoard(player2);
 

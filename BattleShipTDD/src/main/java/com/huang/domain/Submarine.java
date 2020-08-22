@@ -1,6 +1,7 @@
+package com.huang.domain;
 public class Submarine extends Ships {
 
-    Submarine (String type) {
+    public Submarine (String type) {
         this.setType(type);
     }
 }

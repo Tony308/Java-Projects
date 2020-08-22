@@ -1,7 +1,9 @@
+package com.huang.domain;
+
 public class Carrier extends Ships {
 
 
-    Carrier (String type) {
+    public Carrier (String type) {
         this.setType(type);
     }
     public String getType() {

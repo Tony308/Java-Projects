@@ -1,3 +1,4 @@
+package com.huang.domain;
 import javax.print.DocFlavor;
 
 public abstract class Ships{

@@ -1,9 +1,19 @@
+package com.huang.test;
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import com.huang.Game;
+import com.huang.domain.Battleship;
+import com.huang.domain.Carrier;
+import com.huang.domain.Destroyer;
+import com.huang.domain.Direction;
+import com.huang.domain.PatrolBoat;
+import com.huang.domain.Player;
+import com.huang.domain.Submarine;
 
 import java.util.Scanner;
 
@@ -53,7 +63,7 @@ public class Testing {
     @Test
     @Ignore
     public void hitOrMissTest() {
-
+    	
     }
 
     @Test

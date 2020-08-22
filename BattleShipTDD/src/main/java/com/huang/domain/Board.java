@@ -1,3 +1,4 @@
+package com.huang.domain;
 public class Board {
     public String[][] board;
 

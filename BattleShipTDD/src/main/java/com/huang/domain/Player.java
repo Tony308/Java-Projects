@@ -1,3 +1,5 @@
+package com.huang.domain;
+
 
 import java.util.HashMap;
 
@@ -14,11 +16,11 @@ public class Player extends Board {
         this.ships = ships;
     }
 
-    Player(String name) {
+    public Player(String name) {
         this.name = name;
     }
 
-    void placeShip(String type, int x, int y, Direction input)  {
+    public void placeShip(String type, int x, int y, Direction input)  {
 
         if (board[x][y].equals(" ~ ")) {
             this.board[x][y] = " " + type;
