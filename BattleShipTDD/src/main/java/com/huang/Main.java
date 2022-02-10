@@ -1,13 +1,14 @@
 package com.huang;
 
-import com.huang.domain.Player;
+import com.huang.models.Board;
+import com.huang.models.Player;
 
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game();
+      /*  Game game = new Game();
 
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
@@ -25,9 +26,11 @@ public class Main {
                 stuff[x][z] = " ~ ";
             }
         }
-        
+
         game.printPlayerBoard(player1);
-        game.printPlayerBoard(player2);
+        game.printPlayerBoard(player2);*/
+        Board field = new Board(3);
+        
 
     }
 

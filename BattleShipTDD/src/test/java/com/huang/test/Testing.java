@@ -1,35 +1,32 @@
 package com.huang.test;
-import static org.junit.Assert.*;
 
+import com.huang.Game;
+import com.huang.models.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.huang.Game;
-import com.huang.domain.Battleship;
-import com.huang.domain.Carrier;
-import com.huang.domain.Destroyer;
-import com.huang.domain.Direction;
-import com.huang.domain.PatrolBoat;
-import com.huang.domain.Player;
-import com.huang.domain.Submarine;
-
 import java.util.Scanner;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class Testing {
 
+    private Game game;
     @Before
     public void setup() {
+        game = new Game();
     }
 
     @After
     public void teardown() {
 
     }
+
     @Test
     public void placeShipTest() {
-        Game game = new Game();
 
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
@@ -45,7 +42,7 @@ public class Testing {
     }
 
     @Test
-    public void createBoardTest(){
+    public void createPlayerBoardTest(){
         Player player1 = new Player("Tony");
         Player player2 = new Player("John");
         String[][] stuff = new String[3][3];
@@ -57,7 +54,6 @@ public class Testing {
         }
         assertArrayEquals(stuff, player1.board);
         assertArrayEquals(stuff, player2.board);
-
     }
 
     @Test
@@ -106,97 +102,51 @@ public class Testing {
         player2.addShip(d2);
         player2.addShip(c2);
 
-        assertEquals(7,player1.ships.size());
-        assertEquals(7,player2.ships.size());
+        assertEquals(7,player1.getShips().size());
+        assertEquals(7,player2.getShips().size());
     }
 
     @Test
     public void getDirectionDownTest() {
         Direction result = null;
-        String input = "DoWn".toLowerCase();
-
-        String temp = input;
-
-        if (temp.equals("up")) {
-            result = Direction.UP;
-        } else if (temp.equals("right")) {
-            result =  Direction.RIGHT;
-        } else if (temp.equals("down")) {
-            result =  Direction.DOWN;
-        } else if (temp.equals("left")) {
-            result =   Direction.LEFT;
-        } else {
-            System.out.println("You haven't entered a direction correctly.");
-            System.out.println("Try again.");
-        }
+        result = game.getDirection("dOwn");
         assertEquals(Direction.DOWN, result);
-
+        result = game.getDirection("Down");
+        assertEquals(Direction.DOWN, result);
+        result = game.getDirection("DOWN");
+        assertEquals(Direction.DOWN, result);
     }
 
     @Test
     public void getDirectionUpTest() {
         Direction result = null;
-        String input = "up";
-
-        String temp = input.toLowerCase();
-
-        if (temp.equals("up")) {
-            result = Direction.UP;
-        } else if (temp.equals("right")) {
-            result =  Direction.RIGHT;
-        } else if (temp.equals("down")) {
-            result =  Direction.DOWN;
-        } else if (temp.equals("left")) {
-            result =   Direction.LEFT;
-        } else {
-            System.out.println("You haven't entered a direction correctly.");
-            System.out.println("Try again.");
-        }
+        result = game.getDirection("uP");
         assertEquals(Direction.UP, result);
-
+        result = game.getDirection("Up");
+        assertEquals(Direction.UP, result);
+        result = game.getDirection("UP");
+        assertEquals(Direction.UP, result);
+        result = game.getDirection("up");
+        assertEquals(Direction.UP, result);
     }
+
     @Test
     public void getDirectionRightTest() {
         Direction result = null;
-        String input = "RighT";
+        game.getDirection("right");
 
-        String temp = input.toLowerCase();
-
-        if (temp.equals("up")) {
-            result = Direction.UP;
-        } else if (temp.equals("right")) {
-            result =  Direction.RIGHT;
-        } else if (temp.equals("down")) {
-            result =  Direction.DOWN;
-        } else if (temp.equals("left")) {
-            result =   Direction.LEFT;
-        } else {
-            System.out.println("You haven't entered a direction correctly.");
-            System.out.println("Try again.");
-        }
         assertEquals(Direction.RIGHT, result);
     }
 
     @Test
     public void getDirectionLeftTest() {
         Direction result = null;
-        String input = "LEFT";
 
-        String temp = input.toLowerCase();
-
-        if (temp.equals("up")) {
-            result = Direction.UP;
-        } else if (temp.equals("right")) {
-            result =  Direction.RIGHT;
-        } else if (temp.equals("down")) {
-            result =  Direction.DOWN;
-        } else if (temp.equals("left")) {
-            result =   Direction.LEFT;
-        } else {
-            System.out.println("You haven't entered a direction correctly.");
-            System.out.println("Try again.");
-        }
-        assertEquals(Direction.LEFT, result);
-
+        result = game.getDirection("left");
+        assertEquals(Direction.UP, result);
+        result = game.getDirection("LEFT");
+        assertEquals(Direction.UP, result);
+        result = game.getDirection("lEFT");
+        assertEquals(Direction.UP, result);
     }
 }

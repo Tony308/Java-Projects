@@ -1,11 +1,8 @@
-package com.huang.domain;
+package com.huang.models;
 
 public class Destroyer extends Ships {
     public Destroyer(String type) {
         this.setType(type);
-    }
-    public String getType() {
-        return this.shipIdentifier;
     }
 
 }

@@ -1,18 +1,16 @@
 package com.huang;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.huang.domain.Battleship;
-import com.huang.domain.Carrier;
-import com.huang.domain.Destroyer;
-import com.huang.domain.Direction;
-import com.huang.domain.PatrolBoat;
-import com.huang.domain.Player;
-import com.huang.domain.Submarine;
+import com.huang.models.Battleship;
+import com.huang.models.Carrier;
+import com.huang.models.Destroyer;
+import com.huang.models.Direction;
+import com.huang.models.PatrolBoat;
+import com.huang.models.Player;
+import com.huang.models.Submarine;
 
 public class Game {
 
@@ -83,16 +81,16 @@ public class Game {
     public Direction getDirection(String input) {
         Direction result = null;
 
-        String temp = input.toLowerCase();
+        String direction = input.toLowerCase();
 
-        if (temp.equals("up")) {
+        if (direction.equals("up")) {
             result = Direction.UP;
-        } else if (temp.equals("right")) {
-            result =  Direction.RIGHT;
-        } else if (temp.equals("down")) {
-            result =  Direction.DOWN;
-        } else if (temp.equals("left")) {
-            result =   Direction.LEFT;
+        } else if (direction.equals("right")) {
+            result = Direction.RIGHT;
+        } else if (direction.equals("down")) {
+            result = Direction.DOWN;
+        } else if (direction.equals("left")) {
+            result = Direction.LEFT;
         } else {
             System.out.println("You haven't entered a direction correctly.");
             System.out.println("Try again.");
@@ -113,10 +111,10 @@ public class Game {
 
     public void placeShipsPhase(Player player1, Player player2, Scanner sc, Game game) {
         do {
-            int shipsLeft = player1.ships.size();
+            int shipsLeft = player1.getShips().size();
 
             // Iterates through the data dictionary
-            Iterator it = player1.ships.entrySet().iterator();
+            Iterator it = player1.getShips().entrySet().iterator();
 
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry)it.next();
@@ -145,7 +143,7 @@ public class Game {
             System.out.println("Column: ?");
             col = sc.nextInt();
 
-            System.out.println("Enter direction you want");
+            System.out.println("Enter direction/orientation you want");
             direction = sc.next();
             player2.placeShip( ship, row ,col, game.getDirection(direction));
             shipsLeft--;

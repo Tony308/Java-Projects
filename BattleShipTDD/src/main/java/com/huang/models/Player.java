@@ -1,11 +1,11 @@
-package com.huang.domain;
+package com.huang.models;
 
 
 import java.util.HashMap;
 
 public class Player extends Board {
 
-    public HashMap<String, Ships> ships = new HashMap<String, Ships>();
+    private HashMap<String, Ships> ships = new HashMap<>();
     private String name;
 
     public HashMap<String, Ships> getShips() {
@@ -17,14 +17,15 @@ public class Player extends Board {
     }
 
     public Player(String name) {
+        super();
         this.name = name;
     }
 
     public void placeShip(String type, int x, int y, Direction input)  {
 
-        if (board[x][y].equals(" ~ ")) {
+        if (this.board[x][y].equals(" ~ ")) {
             this.board[x][y] = " " + type;
-        } else if (!board[x][y].equals(" ~ ")) {
+        } else {
             System.out.println("This space is occupied.");
         }
 
@@ -49,7 +50,6 @@ public class Player extends Board {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("You can't choose that direction.");
         }
-
     }
 
     public void addShip(Ships boat){

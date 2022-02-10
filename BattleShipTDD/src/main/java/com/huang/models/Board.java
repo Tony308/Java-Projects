@@ -1,8 +1,13 @@
-package com.huang.domain;
+package com.huang.models;
 public class Board {
     public String[][] board;
 
-    Board () {
+    public Board (int size) {
+        board = new String[size][size];
+        populateDefaultBoard();
+    }
+
+    public Board () {
         board = new String[3][3];
         populateDefaultBoard();
     }

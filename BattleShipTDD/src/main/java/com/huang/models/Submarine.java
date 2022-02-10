@@ -1,4 +1,4 @@
-package com.huang.domain;
+package com.huang.models;
 public class Submarine extends Ships {
 
     public Submarine (String type) {
